@@ -1,0 +1,261 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>둔산동 단지별 실거래 모션</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 1080×1920 세로 스테이지를 화면에 맞춰 축소, 아래에 재생 컨트롤 */
+:root{
+  --ink:#0E1726;      /* 바탕: 등기부 잉크빛 남색 */
+  --ink-2:#16233A;    /* 카드면 */
+  --line:#2A3A57;     /* 눈금/구분선 */
+  --paper:#F3EEE3;    /* 본문 글자: 종이색 */
+  --muted:#93A0B8;    /* 보조 글자 */
+  --stamp:#E8584A;    /* 강조(최고가 도장) */
+  --display:"Black Han Sans","Noto Sans CJK KR","Noto Sans KR",sans-serif;
+  --body:"Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo",sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);display:flex;flex-direction:column;align-items:center;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;box-sizing:border-box;overflow:hidden}
+#wrap{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
+#holder{position:relative;overflow:hidden;border-radius:14px;box-shadow:0 0 0 1px var(--line)}
+#stage{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;background:var(--ink);overflow:hidden;font-family:var(--body)}
+.ctrl{display:flex;gap:10px;align-items:center;padding-top:10px;width:100%;max-width:520px}
+.ctrl button{font:600 14px var(--body);color:var(--paper);background:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.ctrl button:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
+#bar{flex:1;height:6px;background:var(--line);border-radius:3px;position:relative;cursor:pointer}
+#bar i{position:absolute;left:0;top:0;bottom:0;background:var(--paper);border-radius:3px;width:0}
+.ctrl[hidden]{display:none}
+#tc{font:500 13px var(--body);color:var(--muted);font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+
+/* ---------- stage ---------- */
+.grain{position:absolute;inset:0;background:
+  repeating-linear-gradient(0deg,transparent 0 119px,rgba(147,160,184,.06) 119px 120px),
+  repeating-linear-gradient(90deg,transparent 0 119px,rgba(147,160,184,.06) 119px 120px);}
+.prog{position:absolute;left:64px;right:64px;top:56px;display:flex;gap:8px;z-index:5}
+.prog span{flex:1;height:6px;border-radius:3px;background:rgba(243,238,227,.18);overflow:hidden}
+.prog span b{display:block;height:100%;width:0;background:var(--paper)}
+.hdr{position:absolute;left:64px;right:64px;top:88px;display:flex;justify-content:space-between;font:500 26px var(--body);color:var(--muted);z-index:5;letter-spacing:.02em}
+.hdr b{color:var(--paper);font-weight:700}
+.foot{position:absolute;left:64px;right:64px;bottom:56px;font:400 22px var(--body);color:var(--muted);line-height:1.5;z-index:5}
+.scene{position:absolute;inset:0;visibility:hidden}
+.a{will-change:transform,opacity}
+
+/* intro */
+.i-k{position:absolute;left:64px;top:300px;font:700 34px var(--body);color:var(--muted);letter-spacing:.12em}
+.i-t{position:absolute;left:58px;top:360px;font:400 168px/1.02 var(--display);color:var(--paper);letter-spacing:-.01em}
+.i-t em{font-style:normal;color:var(--stamp)}
+.i-d{position:absolute;left:64px;top:740px;font:500 38px var(--body);color:var(--paper)}
+.i-d small{display:block;font-size:28px;color:var(--muted);margin-top:10px}
+.i-list{position:absolute;left:64px;right:64px;top:960px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.chip{display:flex;align-items:center;gap:20px;padding:26px 30px;border-radius:18px;background:var(--ink-2);border:1px solid var(--line);font:400 54px var(--display)}
+.chip i{width:22px;height:22px;border-radius:50%;flex:none}
+.chip small{margin-left:auto;font:500 26px var(--body);color:var(--muted)}
+
+/* apt */
+.ap-e{position:absolute;left:64px;top:180px;font:500 30px var(--body);color:var(--muted)}
+.ap-n{position:absolute;left:52px;top:214px;font:400 230px/1 var(--display);letter-spacing:-.02em}
+.ap-sub{position:absolute;left:64px;right:64px;top:466px;display:flex;flex-wrap:wrap;gap:12px}
+.ap-sub span{font:500 28px var(--body);padding:8px 18px;border-radius:999px;border:1.5px solid var(--c);color:var(--paper)}
+.ap-sub span b{color:var(--c);margin-left:8px}
+.kpi{position:absolute;left:64px;right:64px;top:560px;display:grid;grid-template-columns:1fr 1.25fr;gap:28px}
+.kpi > div{border-top:4px solid var(--c);padding-top:20px}
+.kpi label{display:block;font:500 28px var(--body);color:var(--muted)}
+.kpi strong{display:block;font:400 132px/1.05 var(--display);color:var(--paper);font-variant-numeric:tabular-nums;margin-top:6px}
+.kpi strong small{font:700 40px var(--body);margin-left:8px;color:var(--muted)}
+.rg{position:absolute;left:64px;right:64px;top:840px;height:650px}
+.dense .rows{height:600px}.dense .row .lb small,.dense .row .vl small{display:inline;margin-left:10px}.dense .row .vl small{display:none}.dense .row{grid-template-columns:230px 1fr 220px}
+.rg h3{margin:0 0 18px;font:700 30px var(--body);color:var(--paper);display:flex;justify-content:space-between}
+.rg h3 span{font-weight:400;font-size:24px;color:var(--muted)}
+.rows{position:relative;display:flex;flex-direction:column;justify-content:space-around;height:560px}
+.row{display:grid;grid-template-columns:150px 1fr 250px;align-items:center;gap:20px}
+.row .lb{font:700 30px var(--body)}
+.row .lb small{display:block;font:400 22px var(--body);color:var(--muted)}
+.track{position:relative;height:34px;background:rgba(243,238,227,.06);border-radius:17px}
+.rng{position:absolute;top:0;bottom:0;border-radius:17px;background:var(--c);opacity:.9;transform-origin:left center}
+.dot{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--ink);border:4px solid var(--paper)}
+.row .vl{font:700 30px var(--body);text-align:right;font-variant-numeric:tabular-nums}
+.row .vl small{display:block;font:400 22px var(--body);color:var(--muted)}
+.bt{position:absolute;left:64px;right:64px;top:1520px;display:grid;grid-template-columns:1.35fr 1fr;gap:24px}
+.card{background:var(--ink-2);border:1px solid var(--line);border-radius:22px;padding:28px 30px;height:250px;box-sizing:border-box;position:relative;overflow:hidden}
+.card label{font:700 26px var(--body);color:var(--muted)}
+.top-p{font:400 84px/1.1 var(--display);color:var(--paper);margin-top:14px}
+.top-m{font:500 26px var(--body);color:var(--muted);margin-top:10px}
+.stampx{position:absolute;right:22px;top:20px;font:900 24px var(--body);color:var(--stamp);border:3px solid var(--stamp);border-radius:10px;padding:4px 12px;transform:rotate(8deg)}
+.mo{display:flex;align-items:flex-end;gap:22px;height:150px;margin-top:14px}
+.mo div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.mo b{font:700 28px var(--body);font-variant-numeric:tabular-nums}
+.mo i{display:block;width:100%;background:var(--c);border-radius:8px 8px 3px 3px;transform-origin:bottom}
+.mo span{font:500 22px var(--body);color:var(--muted)}
+
+/* none */
+.nn-t{position:absolute;left:64px;top:240px;font:400 96px/1.15 var(--display)}
+.nn-c{position:absolute;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between;padding:44px 48px;border-radius:24px;border:2px dashed var(--line)}
+.nn-c h4{margin:0;font:400 110px/1 var(--display);color:var(--paper)}
+.nn-c p{margin:0;text-align:right;font:500 30px var(--body);color:var(--muted)}
+.nn-c p b{display:block;font:400 96px/1 var(--display);color:var(--paper)}
+.nn-d{position:absolute;left:64px;right:64px;top:1260px;font:400 32px/1.6 var(--body);color:var(--muted)}
+
+/* summary */
+.sm-t{position:absolute;left:64px;top:190px;font:400 104px/1.1 var(--display)}
+.u{font-family:var(--body);font-weight:900}
+.i-list .chip:first-child{grid-column:1/-1}
+.chip.wide{grid-column:1/-1;background:transparent;border-style:dashed}
+.sm-s{position:absolute;left:64px;top:430px;font:500 30px var(--body);color:var(--muted)}
+.sm-rows{position:absolute;left:64px;right:64px;top:540px;display:flex;flex-direction:column;gap:40px}
+.sr{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center}
+.sr .nm{font:400 64px var(--display)}
+.sr .bw{position:relative;height:110px}
+.sr .bw i{position:absolute;left:0;top:0;bottom:0;border-radius:0 16px 16px 0;transform-origin:left}
+.sr .bw b{position:absolute;top:50%;transform:translateY(-50%);font:400 54px var(--display);color:var(--paper);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sr .bw b small{font:500 26px var(--body);color:var(--muted);margin-left:10px}
+.sm-n{position:absolute;left:64px;right:64px;top:1500px;font:400 28px/1.6 var(--body);color:var(--muted)}
+
+/* outro */
+.o-t{position:absolute;left:64px;right:64px;top:300px;font:400 140px/1.05 var(--display)}
+.o-t em{font-style:normal;color:var(--stamp)}
+.o-d{position:absolute;left:64px;right:64px;top:1440px;font:400 28px/1.7 var(--body);color:var(--muted)}
+.kk{position:absolute;left:64px;right:64px;top:720px;display:grid;grid-template-columns:360px 1fr;gap:44px;align-items:center;padding:44px;border-radius:28px;background:var(--ink-2);border:1px solid var(--line)}
+.kk img{width:360px;height:360px;border-radius:16px;display:block}
+.kk h4{margin:0;font:400 72px/1.15 var(--display);color:var(--paper)}
+.kk p{margin:18px 0 0;font:500 30px/1.5 var(--body);color:var(--muted)}
+.kk p b{display:block;margin-top:14px;font:700 30px var(--body);color:var(--paper);word-break:break-all}
+.o-d small{display:block;color:var(--muted);font-size:28px;font-weight:400;margin-top:18px}
+
+@media (prefers-reduced-motion: reduce){ .a{will-change:auto} }
+</style>
+
+<div id="wrap"><div id="holder"><div id="stage"><div class="grain"></div><div class="prog" id="prog"></div>
+  <div class="hdr"><span><b>둔산동</b> 아파트 매매 실거래</span><span>2026.08.01 – 10.27 계약</span></div>
+  <div id="scenes"></div>
+  <div class="foot" id="foot">자료: 국토교통부 실거래가 공개시스템(계약일 기준, 해제 거래 제외) · 참고용</div>
+</div></div></div>
+<div class="ctrl">
+  <button id="pp" type="button" aria-label="일시정지">일시정지</button>
+  <div id="bar" role="slider" aria-label="재생 위치" tabindex="0"><i id="fill"></i></div>
+  <span id="tc">0:00</span>
+</div>
+
+<script>
+const DATA = [{"name": "국화", "color": "#F2B33D", "cnt": 45, "built": "1991–1992", "road": "둔산로 201", "months": [17, 19, 9], "avg": 2395, "sizes": [[77, 4, 43200, 62000, 54425], [84, 21, 51700, 73000, 63400], [92, 1, 78000, 78000, 78000], [114, 10, 79800, 95000, 86180], [127, 2, 90000, 105000, 97500], [134, 2, 57500, 80000, 68750], [149, 2, 85000, 93500, 89250], [165, 3, 90900, 121000, 106633]], "top": {"a": 165.6, "p": 121000, "m": 9, "day": 2, "fl": 10, "n": "국화한신"}, "sub": [["동성", 13], ["라이프", 10], ["우성", 8], ["신동아", 7], ["한신", 7]]}, {"name": "청솔", "color": "#4CC38A", "cnt": 10, "built": "1991", "road": "둔산로 223", "months": [3, 5, 2], "avg": 2096, "sizes": [[73, 3, 44500, 48500, 46000], [84, 4, 53000, 65000, 60225], [126, 2, 60000, 71000, 65500], [164, 1, 97500, 97500, 97500]], "top": {"a": 164.51, "p": 97500, "m": 8, "day": 18, "fl": 10, "n": "청솔아파트"}, "sub": []}, {"name": "가람", "color": "#5AA9FF", "cnt": 12, "built": "1991", "road": "둔산북로 215", "months": [8, 3, 1], "avg": 2308, "sizes": [[84, 2, 71000, 71500, 71250], [122, 6, 70300, 93000, 81217], [137, 3, 93000, 97000, 95000], [164, 1, 107000, 107000, 107000]], "top": {"a": 164.52, "p": 107000, "m": 10, "day": 17, "fl": 1, "n": "가람"}, "sub": []}, {"name": "크로바", "color": "#C6E15B", "cnt": 12, "built": "1992", "road": "둔산로 155", "months": [3, 7, 2], "avg": 5120, "sizes": [[101, 2, 145000, 145000, 145000], [114, 5, 142000, 189000, 170800], [134, 3, 218000, 229700, 224900], [164, 2, 250000, 292000, 271000]], "top": {"a": 164.95, "p": 292000, "m": 10, "day": 6, "fl": 15, "n": "크로바"}, "sub": []}, {"name": "목련", "color": "#F4A7C4", "cnt": 6, "built": "1993", "road": "둔산남로 127", "months": [2, 3, 1], "avg": 4189, "sizes": [[75, 1, 68000, 68000, 68000], [101, 1, 140000, 140000, 140000], [117, 4, 140000, 165000, 157000]], "top": {"a": 117.76, "p": 165000, "m": 9, "day": 9, "fl": 3, "n": "목련"}, "sub": []}];
+const NONE = ["한양공작","한가람"];
+const ORDER = ["국화","청솔","가람","크로바","목련","한양공작","한가람"];
+const colorOf = n => (DATA.find(d=>d.name===n)||{}).color || "#93A0B8";
+
+/* ---------- helpers ---------- */
+const eok = v => { const e=Math.floor(v/10000), r=v%10000; return (e?e+"억":"")+(r?(e?" ":"")+r.toLocaleString("ko-KR")+(e?"":"만"):""); };
+const eokS = v => (v/10000).toFixed(1).replace(/\.0$/,"")+"억";
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=t=>1-Math.pow(1-t,3);
+const easeBack=t=>{const c=1.6;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2)};
+
+/* ---------- scenes ---------- */
+const S=[]; const host=document.getElementById("scenes");
+function add(html,dur){const el=document.createElement("div");el.className="scene";el.innerHTML=html;host.appendChild(el);S.push({el,dur});}
+
+add(`<div class="i-k a" data-d=".1">둔산동 실거래 브리핑</div>
+<div class="i-t a" data-d=".25">단지별<br>매매가 <em>한눈에</em></div>
+<div class="i-d a" data-d=".6">대전 서구 둔산동 7개 단지<small>2026년 8월 1일 ~ 10월 27일 계약분</small></div>
+<div class="i-list">${DATA.map((d,i)=>`<div class="chip a" data-d="${(.9+i*.12).toFixed(2)}" data-k="pop"><i style="background:${d.color}"></i>${d.name}<small>${d.cnt}건</small></div>`).join("")}<div class="chip wide a" data-d="1.55" data-k="pop"><i style="background:var(--muted)"></i>${NONE.join(" · ")}<small>거래 없음</small></div></div>`,4.6);
+
+DATA.forEach(d=>{
+  const lo=Math.min(...d.sizes.map(s=>s[2])), hi=Math.max(...d.sizes.map(s=>s[3]));
+  const a0=Math.floor(lo*0.9/10000)*10000, a1=Math.ceil(hi*1.02/10000)*10000;
+  const X=v=>((v-a0)/(a1-a0)*100);
+  const mMax=Math.max(...d.months);
+  const rows=d.sizes.map((s,i)=>{const [ar,c,mn,mx,av]=s;const l=X(mn),w=Math.max(X(mx)-l,2.2);
+    return `<div class="row a" data-d="${(1.5+i*.1).toFixed(2)}">
+      <div class="lb">${ar}㎡<small>${Math.round(ar/3.3058)}평 · ${c}건</small></div>
+      <div class="track"><div class="rng a" data-k="sx" data-d="${(1.6+i*.1).toFixed(2)}" style="left:${l}%;width:${w}%"></div><div class="dot a" data-k="fade" data-d="${(2+i*.1).toFixed(2)}" style="left:${X(av)}%"></div></div>
+      <div class="vl">${mn===mx?eokS(mn):eokS(mn)+" ~ "+eokS(mx)}<small>평균 ${eokS(av)}</small></div></div>`}).join("");
+  add(`<div style="--c:${d.color}" class="${d.sizes.length>5?"dense":""}">
+  <div class="ap-e a" data-d=".1">${d.built}년 준공 · ${d.road}</div>
+  <div class="ap-n a" data-d=".2" style="color:${d.color}">${d.name}</div>
+  ${d.sub.length?`<div class="ap-sub">${d.sub.map((s,i)=>`<span class="a" data-k="pop" data-d="${(.55+i*.08).toFixed(2)}">${s[0]}<b>${s[1]}</b></span>`).join("")}</div>`:""}
+  <div class="kpi">
+    <div class="a" data-d=".7"><label>매매 거래</label><strong><span data-count="${d.cnt}" data-d=".8">0</span><small>건</small></strong></div>
+    <div class="a" data-d=".85"><label>전용 3.3㎡당 평균</label><strong><span data-count="${d.avg}" data-d=".95" data-fmt="n">0</span><small>만원</small></strong></div>
+  </div>
+  <div class="rg"><h3 class="a" data-d="1.3">전용면적별 거래가 범위<span>막대 = 최저~최고 · 점 = 평균</span></h3><div class="rows">${rows}</div></div>
+  <div class="bt">
+    <div class="card a" data-d="2.4"><label>기간 최고가</label><div class="top-p">${eok(d.top.p)}</div>
+      <div class="top-m">${d.sub.length?d.top.n.replace("국화","국화 ")+" · ":""}전용 ${d.top.a}㎡ · ${d.top.fl}층 · ${d.top.m}월 ${d.top.day}일</div>
+      <div class="stampx a" data-k="stamp" data-d="2.9">최고가</div></div>
+    <div class="card a" data-d="2.55"><label>월별 거래 건수</label><div class="mo">${d.months.map((m,i)=>`<div><b>${m}</b><i class="a" data-k="sy" data-d="${(2.8+i*.12).toFixed(2)}" style="height:${Math.max(m/mMax*86,4)}px"></i><span>${8+i}월</span></div>`).join("")}</div></div>
+  </div></div>`,6.6);
+});
+
+add(`<div class="nn-t a" data-d=".1">이 기간<br>매매 신고 없음</div>
+${NONE.map((n,i)=>`<div class="nn-c a" data-d="${(.5+i*.25).toFixed(2)}" style="top:${620+i*300}px"><h4>${n}</h4><p><b>0건</b>8.1 ~ 10.27 계약</p></div>`).join("")}
+<div class="nn-d a" data-d="1.2">이번 조회 자료(둔산동 · 계약일 기준)에 두 단지의 매매 거래가 없었습니다. 10월 계약분은 신고기한(30일)이 남아 추가될 수 있습니다.</div>`,4.2);
+
+const rank=[...DATA].sort((a,b)=>b.avg-a.avg); const amax=rank[0].avg;
+add(`<div class="sm-t a" data-d=".1">전용 3.3<span class="u">㎡</span>당<br>평균 거래가</div>
+<div class="sm-s a" data-d=".35">거래금액 ÷ 전용면적(평), 단위 만원</div>
+<div class="sm-rows">${rank.map((d,i)=>{const w=d.avg/amax*64;return `<div class="sr a" data-d="${(.6+i*.15).toFixed(2)}"><div class="nm" style="color:${d.color}">${d.name}</div>
+<div class="bw"><i class="a" data-k="sx" data-d="${(.7+i*.15).toFixed(2)}" style="width:${w}%;background:${d.color}"></i><b style="left:calc(${w}% + 20px)"><span data-count="${d.avg}" data-d="${(.75+i*.15).toFixed(2)}" data-fmt="n">0</span><small>${d.cnt}건</small></b></div></div>`}).join("")}</div>
+<div class="sm-n a" data-d="1.8">평형 구성이 단지마다 달라 평균은 단지 간 대략 비교용입니다. 국화는 동성·라이프·우성·신동아·한신 5개 단지 합산입니다.</div>`,6);
+
+add(`<div class="o-t a" data-d=".1">실거래는<br><em>숫자</em>로 봅니다</div>
+<div class="kk a" data-d=".5"><img src="data:image/png;base64,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" alt="카카오톡 오픈채팅방 QR코드"><div><h4>카톡방으로<br>오세요</h4><p>단지별 거래 내역·상담은<br>오픈채팅방에서 안내합니다.<b><a href="https://open.kakao.com/o/gF5GLROi" target="_blank" rel="noopener" style="color:inherit">open.kakao.com/o/gF5GLROi</a></b></p></div></div>`,5.5);
+
+/* ---------- timeline ---------- */
+let acc=0; S.forEach(s=>{s.t0=acc;acc+=s.dur;}); const TOTAL=acc;
+document.getElementById("prog").innerHTML=S.map(()=>"<span><b></b></span>").join("");
+const progB=[...document.querySelectorAll("#prog b")];
+S.forEach(s=>{s.items=[...s.el.querySelectorAll(".a")].map(e=>({e,d:+e.dataset.d||0,k:e.dataset.k||"up"}));
+  s.counts=[...s.el.querySelectorAll("[data-count]")].map(e=>({e,v:+e.dataset.count,d:+e.dataset.d||0,f:e.dataset.fmt}));});
+
+function render(T){
+  T=clamp(T,0,TOTAL-0.001);
+  S.forEach((s,i)=>{
+    const lt=T-s.t0, on=lt>=0&&lt<s.dur;
+    progB[i].style.width=(clamp(lt/s.dur)*100)+"%";
+    s.el.style.visibility=on?"visible":"hidden";
+    if(!on) return;
+    const out=ease(clamp((lt-(s.dur-.45))/.45)); // 장면 퇴장
+    const last=i===S.length-1;
+    s.items.forEach(({e,d,k})=>{
+      const p=clamp((lt-d)/.6), q=ease(p);
+      const o=last?1:1-out;
+      if(k==="sx"){e.style.transform=`scaleX(${q})`;e.style.opacity=o;}
+      else if(k==="sy"){e.style.transform=`scaleY(${q})`;e.style.opacity=o;}
+      else if(k==="fade"){e.style.opacity=q*o;}
+      else if(k==="pop"){const b=easeBack(clamp((lt-d)/.5));e.style.opacity=clamp(p*2)*o;e.style.transform=`scale(${.6+.4*b})`;}
+      else if(k==="stamp"){const b=clamp((lt-d)/.35);e.style.opacity=b*o;e.style.transform=`rotate(8deg) scale(${2.2-1.2*ease(b)})`;}
+      else {e.style.opacity=q*o;e.style.transform=`translateY(${(1-q)*60 - out*40*(last?0:1)}px)`;}
+    });
+    s.counts.forEach(({e,v,d,f})=>{const q=ease(clamp((lt-d)/1.1));const n=Math.round(v*q);e.textContent=f==="n"?n.toLocaleString("ko-KR"):n;});
+  });
+}
+window.TOTAL=TOTAL; window.seek=render;
+
+/* ---------- player ---------- */
+const REC=/record/.test(location.search);
+const stage=document.getElementById("stage"), holder=document.getElementById("holder");
+function fit(){
+  if(REC){holder.style.width="1080px";holder.style.height="1920px";holder.style.borderRadius="0";stage.style.transform="none";return;}
+  const w=document.getElementById("wrap"); const sc=Math.min(w.clientWidth/1080,w.clientHeight/1920);
+  holder.style.width=1080*sc+"px";holder.style.height=1920*sc+"px";stage.style.transform=`scale(${sc})`;
+}
+addEventListener("resize",fit); fit();
+if(REC){document.querySelector(".ctrl").hidden=true;document.body.style.padding="0";render(0);}
+else{
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let t=reduce?S[S.length-2].t0+3:0, playing=!reduce, last=performance.now();
+  const pp=document.getElementById("pp"), fill=document.getElementById("fill"), tc=document.getElementById("tc"), bar=document.getElementById("bar");
+  const fmt=x=>Math.floor(x/60)+":"+String(Math.floor(x%60)).padStart(2,"0");
+  const ui=()=>{pp.textContent=playing?"일시정지":(t>=TOTAL-.01?"다시 보기":"재생");fill.style.width=(t/TOTAL*100)+"%";tc.textContent=fmt(t)+" / "+fmt(TOTAL);};
+  function loop(now){const dt=(now-last)/1000;last=now;if(playing){t+=dt;if(t>=TOTAL){t=TOTAL-.001;playing=false;}}render(t);ui();requestAnimationFrame(loop);}
+  pp.onclick=()=>{if(t>=TOTAL-.01)t=0;playing=!playing;};
+  const seekTo=x=>{const r=bar.getBoundingClientRect();t=clamp((x-r.left)/r.width)*TOTAL;};
+  bar.addEventListener("pointerdown",e=>{seekTo(e.clientX);bar.setPointerCapture(e.pointerId);});
+  bar.addEventListener("pointermove",e=>{if(e.buttons)seekTo(e.clientX);});
+  bar.addEventListener("keydown",e=>{if(e.key==="ArrowRight")t=Math.min(TOTAL-.01,t+2);if(e.key==="ArrowLeft")t=Math.max(0,t-2);});
+  render(t);ui();requestAnimationFrame(loop);
+}
+</script>
+
+</body></html>
